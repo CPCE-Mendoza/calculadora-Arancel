@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Arancel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://cpcemza.org.ar/img/logo.png" alt="Logo">
+    </div>
+    <h1>Calculadora de Arancel</h1>
+    <form id="arancelForm">
+      <label for="activo">Activo:</label>
+      <input type="text" id="activo" name="activo" placeholder="0,00" required><br>
+      <label for="pasivo">Pasivo:</label>
+      <input type="text" id="pasivo" name="pasivo" placeholder="0,00" required><br>
+      <label for="ingresos">Ingresos:</label>
+      <input type="text" id="ingresos" name="ingresos" placeholder="0,00" required><br>
+      <input type="submit" value="Calcular">
+      <button type="button" id="enviarMail">Enviar por Mail</button>
+      <button type="button" id="otraConsulta">Otra Consulta</button>
+    </form>
+    <div id="resultado"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
