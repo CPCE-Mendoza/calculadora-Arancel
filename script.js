@@ -145,3 +145,4 @@ function formatToNumber(value) {
   // Convertir el valor formateado de nuevo a número
   return parseFloat(value.replace(/\./g, '').replace(',', '.')) || 0;
 }
+
