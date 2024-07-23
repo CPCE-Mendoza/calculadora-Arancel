@@ -39,22 +39,22 @@ document.getElementById('enviarMail').addEventListener('click', function() {
     var payload = {
       'recipient': recipient,
       'subject': 'Resultado Calculadora de Arancel CPCE Mendoza',
-      'body': `Importe Base de Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}
-El arancel es para los siguientes trámites:\n
-ESTADOS CONTABLES SOC. COMERCIALES\n
-ESTADOS CONTABLES ENTIDADES SIN F/ LUCROS\n
-ESTADOS CONTABLES DE COOPERATIVA\n
-ESTADOS CONTABLES INTERMEDIOS\n
-COMPILACIÓN\n
-ESTADOS CONTABLES ESPECIALES\n
-RECTIFICATIVO - ESTADOS CONTABLES SOC. COMERCIALES\n
-RECTIFICATIVO - ESTADOS CONTABLES ENTIDADES SIN F/ LUCROS\n
-RECTIFICATIVO - ESTADOS CONTABLES DE COOPERATIVA\n
-RECTIFICATIVO - ESTADOS CONTABLES INTERMEDIOS\n
-RECTIFICATIVO - COMPILACIÓN\n
-RECTIFICATIVO - ESTADOS CONTABLES ESPECIALES\n
-Incluye dos trámites con diferentes destinatarios.\n
-Te esperamos en Mi Cuenta para gestionar el trámite`
+      'body': `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}
+El Arancel Es Para Los Siguientes Trámites:\n
+Estados Contables Soc. Comerciales\n
+Estados Contables Entidades Sin F/ Lucros\n
+Estados Contables De Cooperativa\n
+Estados Contables Intermedios\n
+Compilación\n
+Estados Contables Especiales\n
+Rectificativo - Estados Contables Soc. Comerciales\n
+Rectificativo - Estados Contables Entidades Sin F/ Lucros\n
+Rectificativo - Estados Contables De Cooperativa\n
+Rectificativo - Estados Contables Intermedios\n
+Rectificativo - Compilación\n
+Rectificativo - Estados Contables Especiales\n
+Incluye Dos Trámites Con Diferentes Destinatarios.\n
+Te Esperamos En Mi Cuenta Para Gestionar El Trámite`
     };
 
     fetch(url, {
@@ -115,20 +115,20 @@ function calcularArancel(activo, pasivo, ingresos) {
     '<p><b>Importe Base de Búsqueda:</b> $' + formattedImporteBase + '</p>' +
     '<p><b>Arancel Fijo:</b> $' + formattedArancel + '</p>' +
     '<p>El arancel es para los siguientes trámites:</p>' +
-    '<p>ESTADOS CONTABLES SOC. COMERCIALES</p>' +
-    '<p>ESTADOS CONTABLES ENTIDADES SIN F/ LUCROS</p>' +
-    '<p>ESTADOS CONTABLES DE COOPERATIVA</p>' +
-    '<p>ESTADOS CONTABLES INTERMEDIOS</p>' +
-    '<p>COMPILACIÓN</p>' +
-    '<p>ESTADOS CONTABLES ESPECIALES</p>' +
-    '<p>RECTIFICATIVO - ESTADOS CONTABLES SOC. COMERCIALES</p>' +
-    '<p>RECTIFICATIVO - ESTADOS CONTABLES ENTIDADES SIN F/ LUCROS</p>' +
-    '<p>RECTIFICATIVO - ESTADOS CONTABLES DE COOPERATIVA</p>' +
-    '<p>RECTIFICATIVO - ESTADOS CONTABLES INTERMEDIOS</p>' +
-    '<p>RECTIFICATIVO - COMPILACIÓN</p>' +
-    '<p>RECTIFICATIVO - ESTADOS CONTABLES ESPECIALES</p>' +
-    '<p>Incluye dos trámites con diferentes destinatarios.</p>' +
-    '<p>Te esperamos en Mi Cuenta para gestionar el trámite</p>';
+    '<<p>Estados Contables Soc. Comerciales</p>' +
+    '<p>Estados Contables Entidades Sin F/ Lucros</p>' +
+    '<p>Estados Contables De Cooperativa</p>' +
+    '<p>Estados Contables Intermedios</p>' +
+    '<p>Compilación</p>' +
+    '<p>Estados Contables Especiales</p>' +
+    '<p>Rectificativo - Estados Contables Soc. Comerciales</p>' +
+    '<p>Rectificativo - Estados Contables Entidades Sin F/ Lucros</p>' +
+    '<p>Rectificativo - Estados Contables De Cooperativa</p>' +
+    '<p>Rectificativo - Estados Contables Intermedios</p>' +
+    '<p>Rectificativo - Compilación</p>' +
+    '<p>Rectificativo - Estados Contables Especiales</p>' +
+    '<p>Incluye Dos Trámites Con Diferentes Destinatarios.</p>' +
+    '<p>Te Esperamos En Mi Cuenta Para Gestionar El Trámite</p>';
 }
 
 function formatNumber(number) {
