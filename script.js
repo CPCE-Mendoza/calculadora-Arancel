@@ -39,7 +39,7 @@ document.getElementById('enviarMail').addEventListener('click', function() {
     var payload = {
       'recipient': recipient,
       'subject': 'Resultado Calculadora de Arancel CPCE Mendoza',
-      'body': `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}
+      'body': `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}\n
 El Arancel Es Para Los Siguientes Trámites:\n
 Estados Contables Soc. Comerciales\n
 Estados Contables Entidades Sin F/ Lucros\n
@@ -115,7 +115,7 @@ function calcularArancel(activo, pasivo, ingresos) {
     '<p><b>Importe Base de Búsqueda:</b> $' + formattedImporteBase + '</p>' +
     '<p><b>Arancel Fijo:</b> $' + formattedArancel + '</p>' +
     '<p>El arancel es para los siguientes trámites:</p>' +
-    '<<p>Estados Contables Soc. Comerciales</p>' +
+    '<p>Estados Contables Soc. Comerciales</p>' +
     '<p>Estados Contables Entidades Sin F/ Lucros</p>' +
     '<p>Estados Contables De Cooperativa</p>' +
     '<p>Estados Contables Intermedios</p>' +
@@ -128,7 +128,8 @@ function calcularArancel(activo, pasivo, ingresos) {
     '<p>Rectificativo - Compilación</p>' +
     '<p>Rectificativo - Estados Contables Especiales</p>' +
     '<p>Incluye Dos Trámites Con Diferentes Destinatarios.</p>' +
-    '<p>Te Esperamos En Mi Cuenta Para Gestionar El Trámite</p>';
+    '<p>Te Esperamos En Mi Cuenta Para Gestionar El Trámite</p>' +
+    '<p><a href="https://micuenta.cpcemza.org.ar/" target="_blank"><button>Ingresar a Mi Cuenta</button></a></p>';
 }
 
 function formatNumber(number) {
@@ -145,4 +146,3 @@ function formatToNumber(value) {
   // Convertir el valor formateado de nuevo a número
   return parseFloat(value.replace(/\./g, '').replace(',', '.')) || 0;
 }
-
