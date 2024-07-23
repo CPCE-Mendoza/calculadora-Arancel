@@ -1,122 +1,122 @@
 html {
-    font-family: sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 body {
-    background-color: #337ab7;
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
+  background-color: #337ab7;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  max-width: 100%; /* Ajusta el tamaño del logo para que no sobrepase el contenedor */
+  height: auto;
+}
+
+input[type="text"], input[type="submit"], button {
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+}
+
+input[type="submit"] {
+  background-color: #ffffff;
+  color: #337ab7;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button {
+  background-color: #ffffff;
+  color: #337ab7;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #dddddd;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+label, p {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+/* Media Queries para dispositivos móviles y tabletas */
+@media (max-width: 768px) {
   .container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 700px;
-  }
-  
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
+    padding: 15px;
   }
   
   .logo img {
-    max-width: 100%; /* Ajusta el tamaño del logo para que no sobrepase el contenedor */
-    height: auto;
+    max-width: 80%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
   }
   
   input[type="text"], input[type="submit"], button {
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-    border: none;
-    font-size: 18px;
-  }
-  
-  input[type="submit"] {
-    background-color: #ffffff;
-    color: #337ab7;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button {
-    background-color: #ffffff;
-    color: #337ab7;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button:hover, input[type="submit"]:hover {
-    background-color: #dddddd;
+    padding: 12px; /* Reduce el padding en pantallas más pequeñas */
+    margin: 12px 0;
+    font-size: 16px; /* Reduce el tamaño de la fuente */
   }
   
   h1 {
-    margin: 20px 0;
-    font-size: 24px;
+    font-size: 20px; /* Reduce el tamaño de la fuente del título */
   }
   
   label, p {
-    margin: 15px 0;
-    font-size: 18px;
+    font-size: 16px; /* Reduce el tamaño de la fuente de etiquetas y párrafos */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
   }
   
-  /* Media Queries para dispositivos móviles y tabletas */
-  @media (max-width: 768px) {
-    .container {
-      padding: 15px;
-    }
-    
-    .logo img {
-      max-width: 80%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
-    }
-    
-    input[type="text"], input[type="submit"], button {
-      padding: 12px; /* Reduce el padding en pantallas más pequeñas */
-      margin: 12px 0;
-      font-size: 16px; /* Reduce el tamaño de la fuente */
-    }
-    
-    h1 {
-      font-size: 20px; /* Reduce el tamaño de la fuente del título */
-    }
-    
-    label, p {
-      font-size: 16px; /* Reduce el tamaño de la fuente de etiquetas y párrafos */
-    }
+  .logo img {
+    max-width: 70%; /* Ajusta aún más el tamaño del logo en pantallas muy pequeñas */
   }
   
-  @media (max-width: 480px) {
-    .container {
-      padding: 10px;
-    }
-    
-    .logo img {
-      max-width: 70%; /* Ajusta aún más el tamaño del logo en pantallas muy pequeñas */
-    }
-    
-    input[type="text"], input[type="submit"], button {
-      padding: 10px; /* Reduce el padding aún más en pantallas muy pequeñas */
-      margin: 10px 0;
-      font-size: 14px; /* Reduce aún más el tamaño de la fuente */
-    }
-    
-    h1 {
-      font-size: 18px; /* Reduce el tamaño del título para pantallas muy pequeñas */
-    }
-    
-    label, p {
-      font-size: 14px; /* Reduce el tamaño de la fuente para etiquetas y párrafos en pantallas pequeñas */
-    }
+  input[type="text"], input[type="submit"], button {
+    padding: 10px; /* Reduce el padding aún más en pantallas muy pequeñas */
+    margin: 10px 0;
+    font-size: 14px; /* Reduce aún más el tamaño de la fuente */
   }
+  
+  h1 {
+    font-size: 18px; /* Reduce el tamaño del título para pantallas muy pequeñas */
+  }
+  
+  label, p {
+    font-size: 14px; /* Reduce el tamaño de la fuente para etiquetas y párrafos en pantallas pequeñas */
+  }
+}
   
