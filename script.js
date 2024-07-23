@@ -34,7 +34,7 @@ document.getElementById('enviarMail').addEventListener('click', function() {
   var recipient = prompt("Introduce el email del destinatario:", "destinatario@example.com");
 
   if (recipient) {
-      var url = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+      var url = 'https://script.google.com/macros/s/AKfycbw3AqYbVEEF5ByaCxRfrtPo_xafEVM7d0vGGlZ52unDtvbifwTAMHKa2XJNgz_u_jAr0w/exec'; // Asegúrate de usar el ID correcto
 
       var payload = {
           'recipient': recipient,
@@ -47,9 +47,7 @@ document.getElementById('enviarMail').addEventListener('click', function() {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          body: Object.keys(payload)
-            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(payload[key]))
-            .join('&')
+          body: new URLSearchParams(payload).toString() // Usa URLSearchParams para manejar el formato
       })
       .then(response => response.text())
       .then(result => {
