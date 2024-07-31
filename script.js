@@ -1,28 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
   const initialForm = document.getElementById('initialForm');
+  const checkForm = document.getElementById('checkForm');
   const arancelForm = document.getElementById('arancelForm');
   const initialScreen = document.getElementById('initialScreen');
+  const checkScreen = document.getElementById('checkScreen');
+  const prioridadScreen = document.getElementById('prioridadScreen');
   const calculatorScreen = document.getElementById('calculatorScreen');
   const simpleResultScreen = document.getElementById('simpleResultScreen');
   const resultado = document.getElementById('resultado');
 
+  const tiposConCalculadora = [
+    "Estados Contables Soc. Comerciales",
+    "Estados Contables Entidades Sin F/ Lucros",
+    "Estados Contables De Cooperativa",
+    "Estados Contables Intermedios",
+    "Compilación",
+    "Estados Contables Especiales",
+    "Rectificativo"
+  ];
+
   initialForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    
     const tipoTramite = document.getElementById('tipoTramite').value;
-    const tiposConCalculadora = [
-      "Estados Contables Soc. Comerciales",
-      "Estados Contables Entidades Sin F/ Lucros",
-      "Estados Contables De Cooperativa",
-      "Estados Contables Intermedios",
-      "Compilación",
-      "Estados Contables Especiales",
-      "Rectificativo"
-    ];
 
     if (tiposConCalculadora.includes(tipoTramite)) {
       initialScreen.style.display = 'none';
-      calculatorScreen.style.display = 'block';
+      checkScreen.style.display = 'block';
     } else {
       initialScreen.style.display = 'none';
       simpleResultScreen.style.display = 'block';
@@ -41,9 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  checkForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const prioridadCheck = document.getElementById('prioridadCheck').checked;
+    if (prioridadCheck) {
+      checkScreen.style.display = 'none';
+      prioridadScreen.style.display = 'block';
+    } else {
+      checkScreen.style.display = 'none';
+      calculatorScreen.style.display = 'block';
+    }
+  });
+
   arancelForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    
     const activo = formatToNumber(document.getElementById('activo').value);
     const pasivo = formatToNumber(document.getElementById('pasivo').value);
     const ingresos = formatToNumber(document.getElementById('ingresos').value);
@@ -59,12 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     resultado.innerHTML = '';
   });
 
+  document.getElementById('continuarConPrioridad').addEventListener('click', () => {
+    prioridadScreen.style.display = 'none';
+    calculatorScreen.style.display = 'block';
+  });
+
   document.querySelectorAll('input[type="text"]').forEach(input => {
     input.addEventListener('input', function() {
       let value = this.value;
-      // Reemplazar caracteres no numéricos y comas
       value = value.replace(/[^0-9,]/g, '');
-      // Formatear el número
       this.value = formatNumber(formatToNumber(value));
     });
   });
@@ -73,16 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const importeBaseBusqueda = (activo + pasivo + ingresos) / 2;
     let arancel;
 
-    if (importeBaseBusqueda <= 30000000) {
-      arancel = 65000;
-    } else if (importeBaseBusqueda <= 120000000) {
-      arancel = 78000;
-    } else if (importeBaseBusqueda <= 500000000) {
-      arancel = 95000;
-    } else if (importeBaseBusqueda <= 2000000000) {
-      arancel = 115000;
+    if (document.getElementById('prioridadCheck').checked) {
+      // Cálculo para trámites prioritarios
+      if (importeBaseBusqueda <= 30000000) {
+        arancel = 130000;
+      } else if (importeBaseBusqueda <= 120000000) {
+        arancel = 156000;
+      } else if (importeBaseBusqueda <= 500000000) {
+        arancel = 190000;
+      } else if (importeBaseBusqueda <= 2000000000) {
+        arancel = 230000;
+      } else {
+        arancel = 270000;
+      }
     } else {
-      arancel = 135000;
+      // Cálculo para trámites no prioritarios
+      if (importeBaseBusqueda <= 30000000) {
+        arancel = 65000;
+      } else if (importeBaseBusqueda <= 120000000) {
+        arancel = 78000;
+      } else if (importeBaseBusqueda <= 500000000) {
+        arancel = 95000;
+      } else if (importeBaseBusqueda <= 2000000000) {
+        arancel = 115000;
+      } else {
+        arancel = 135000;
+      }
     }
 
     const formattedImporteBase = formatNumber(importeBaseBusqueda);
@@ -90,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resultado.innerHTML = `
       <p><b>Importe Base de Búsqueda:</b> $${formattedImporteBase}</p>
-      <p><b>Arancel a pagar: </b> $${formattedArancel}</p>
+      <p><b>Arancel a pagar:</b> $${formattedArancel}</p>
       <p>El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.</p>
       <p style="text-align: left;">El arancel por escala solo corresponde para los siguientes trámites:</p>
       <ul>
@@ -102,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <li>Estados contables especiales</li>
         <li>Rectificativos</li>
       </ul>
-      
       <p>Te esperamos en Mi Cuenta para gestionar el trámite.</p>
       <p><a href="https://micuenta.cpcemza.org.ar/" target="_blank"><button>Ingresar a Mi Cuenta</button></a></p>`;
   }
@@ -118,16 +150,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const importeBaseBusqueda = (activo + pasivo + ingresos) / 2;
       let arancel;
 
-      if (importeBaseBusqueda <= 30000000) {
-        arancel = 65000;
-      } else if (importeBaseBusqueda <= 120000000) {
-        arancel = 78000;
-      } else if (importeBaseBusqueda <= 500000000) {
-        arancel = 95000;
-      } else if (importeBaseBusqueda <= 2000000000) {
-        arancel = 115000;
+      if (document.getElementById('prioridadCheck').checked) {
+        // Cálculo para trámites prioritarios
+        if (importeBaseBusqueda <= 30000000) {
+          arancel = 130000;
+        } else if (importeBaseBusqueda <= 120000000) {
+          arancel = 156000;
+        } else if (importeBaseBusqueda <= 500000000) {
+          arancel = 190000;
+        } else if (importeBaseBusqueda <= 2000000000) {
+          arancel = 230000;
+        } else {
+          arancel = 270000;
+        }
       } else {
-        arancel = 135000;
+        // Cálculo para trámites no prioritarios
+        if (importeBaseBusqueda <= 30000000) {
+          arancel = 65000;
+        } else if (importeBaseBusqueda <= 120000000) {
+          arancel = 78000;
+        } else if (importeBaseBusqueda <= 500000000) {
+          arancel = 95000;
+        } else if (importeBaseBusqueda <= 2000000000) {
+          arancel = 115000;
+        } else {
+          arancel = 135000;
+        }
       }
 
       const formattedImporteBase = formatNumber(importeBaseBusqueda);
@@ -135,15 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       body = `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel a pagar: $${formattedArancel}\n
       El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.\n
-El arancel por escala solo corresponde para los siguientes trámites:\n
-Estados Contables Soc. Comerciales\n
-Estados Contables Entidades Sin F/ Lucros\n
-Estados Contables De Cooperativa\n
-Estados Contables Intermedios\n
-Compilación\n
-Estados Contables Especiales\n
-Rectificativos\n
-Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
+      El arancel por escala solo corresponde para los siguientes trámites:\n
+      Estados Contables Soc. Comerciales\n
+      Estados Contables Entidades Sin F/ Lucros\n
+      Estados Contables De Cooperativa\n
+      Estados Contables Intermedios\n
+      Compilación\n
+      Estados Contables Especiales\n
+      Rectificativos\n
+      Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
     } else {
       body = `Trámite: ${tipoTramite}\nEl valor del trámite es $38.000`;
     }
@@ -151,7 +199,7 @@ Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
     const recipient = prompt("Introduce el email del destinatario:", "destinatario@example.com");
 
     if (recipient) {
-      const url = 'https://script.google.com/macros/s/AKfycbw3AqYbVEEF5ByaCxRfrtPo_xafEVM7d0vGGlZ52unDtvbifwTAMHKa2XJNgz_u_jAr0w/exec'; // Asegúrate de usar el ID correcto
+      const url = 'https://script.google.com/macros/s/AKfycbw3AqYbVEEF5ByaCxRfrtPo_xafEVM7d0vGGlZ52unDtvbifwTAMHKa2XJNgz_u_jAr0w/exec';
 
       const payload = {
         'recipient': recipient,
@@ -164,7 +212,7 @@ Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: new URLSearchParams(payload).toString() // Usa URLSearchParams para manejar el formato
+        body: new URLSearchParams(payload).toString()
       })
       .then(response => response.text())
       .then(result => {
@@ -178,17 +226,13 @@ Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
   }
 
   function formatNumber(number) {
-    // Asegurar que el número sea positivo y tenga hasta 2 decimales
     var parts = number.toString().split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    if (parts[1]) {
-      parts[1] = parts[1].substring(0, 2); // Limitar a 2 decimales
-    }
-    return parts.join(',');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
   }
-  
+
   function formatToNumber(value) {
-    // Convertir el valor formateado de nuevo a número
-    return parseFloat(value.replace(/\./g, '').replace(',', '.')) || 0;
+    return parseFloat(value.replace(/,/g, '') || 0);
   }
 });
+
