@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resultado.innerHTML = `
       <p><b>Importe Base de Búsqueda:</b> $${formattedImporteBase}</p>
-      <p><b>Arancel Fijo:</b> $${formattedArancel}</p>
+      <p><b>Arancel a pagar: </b> $${formattedArancel}</p>
       <p>El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.</p>
       <p style="text-align: left;">El arancel por escala solo corresponde para los siguientes trámites:</p>
       <ul>
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const formattedImporteBase = formatNumber(importeBaseBusqueda);
       const formattedArancel = formatNumber(arancel);
 
-      body = `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}\n
+      body = `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel a pagar: $${formattedArancel}\n
       El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.\n
 El arancel por escala solo corresponde para los siguientes trámites:\n
 Estados Contables Soc. Comerciales\n
