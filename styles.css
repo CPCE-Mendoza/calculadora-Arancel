@@ -35,29 +35,23 @@ body {
   height: auto;
 }
 
-input[type="text"], input[type="submit"], button {
+input[type="text"], input[type="submit"], button, select {
   padding: 15px;
   margin: 15px 0;
   border-radius: 8px;
   border: none;
   font-size: 18px;
-}
-
-input[type="submit"] {
   background-color: #ffffff;
   color: #337ab7;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 
-button {
-  background-color: #ffffff;
-  color: #337ab7;
-  cursor: pointer;
-  font-weight: bold;
+input[type="text"]:focus, select:focus, button:focus {
+  outline: none;
 }
 
-button:hover, input[type="submit"]:hover {
+input[type="submit"]:hover, button:hover, select:hover {
   background-color: #dddddd;
 }
 
@@ -81,7 +75,7 @@ label, p {
     max-width: 80%; /* Ajusta el tamaño del logo en pantallas más pequeñas */
   }
   
-  input[type="text"], input[type="submit"], button {
+  input[type="text"], input[type="submit"], button, select {
     padding: 12px; /* Reduce el padding en pantallas más pequeñas */
     margin: 12px 0;
     font-size: 16px; /* Reduce el tamaño de la fuente */
@@ -105,7 +99,7 @@ label, p {
     max-width: 70%; /* Ajusta aún más el tamaño del logo en pantallas muy pequeñas */
   }
   
-  input[type="text"], input[type="submit"], button {
+  input[type="text"], input[type="submit"], button, select {
     padding: 10px; /* Reduce el padding aún más en pantallas muy pequeñas */
     margin: 10px 0;
     font-size: 14px; /* Reduce aún más el tamaño de la fuente */
@@ -118,4 +112,7 @@ label, p {
   label, p {
     font-size: 14px; /* Reduce el tamaño de la fuente para etiquetas y párrafos en pantallas pequeñas */
   }
+}
+li {
+  text-align: left;
 }
