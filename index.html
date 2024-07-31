@@ -12,18 +12,58 @@
     <div class="logo">
       <img src="https://cpcemza.org.ar/img/logo.png" alt="Logo">
     </div>
-    <h1>Calculadora de Arancel</h1>
-    <form id="arancelForm">
-      <label for="activo">Activo:</label>
-      <input type="text" id="activo" name="activo" placeholder="0,00" required inputmode="numeric"><br>
-      <label for="pasivo">Pasivo:</label>
-      <input type="text" id="pasivo" name="pasivo" placeholder="0,00" required inputmode="numeric"><br>
-      <label for="ingresos">Ingresos:</label>
-      <input type="text" id="ingresos" name="ingresos" placeholder="0,00" required inputmode="numeric"><br>
-      <input type="submit" value="Calcular">
-      <button type="button" id="enviarMail">Enviar por Mail</button>
-      <button type="button" id="otraConsulta">Otra Consulta</button>
-    </form>
+    <h1>Simulador aranceles de legalización</h1>
+    
+    <!-- Pantalla Inicial -->
+    <div id="initialScreen">
+      <form id="initialForm">
+        <label for="tipoTramite">Tipo de Trámite:</label>
+        <select id="tipoTramite" name="tipoTramite" required>
+          <option value="Estados Contables Soc. Comerciales">Estados Contables Soc. Comerciales</option>
+          <option value="Estados Contables Entidades Sin F/ Lucros">Estados Contables Entidades Sin F/ Lucros</option>
+          <option value="Estados Contables De Cooperativa">Estados Contables De Cooperativa</option>
+          <option value="Manifestación De Bienes">Manifestación De Bienes</option>
+          <option value="Certificación De Ingresos">Certificación De Ingresos</option>
+          <option value="Formulario Afip">Formulario Afip</option>
+          <option value="Flujo De Fondos">Flujo De Fondos</option>
+          <option value="Estados Contables Intermedios">Estados Contables Intermedios</option>
+          <option value="Reintegro De Iva">Reintegro De Iva</option>
+          <option value="Otros Trabajos">Otros Trabajos</option>
+          <option value="Formulario 780">Formulario 780</option>
+          <option value="Certificado De Profesionalidad">Certificado De Profesionalidad</option>
+          <option value="Precios De Transferencia Y Derivados">Precios De Transferencia Y Derivados</option>
+          <option value="Ley Fomento Pyme">Ley Fomento Pyme</option>
+          <option value="Inventario Entidades Sin Fines De Lucro">Inventario Entidades Sin Fines De Lucro</option>
+          <option value="Compilación">Compilación</option>
+          <option value="Certificación Licitud Y Origen De Fondos">Certificación Licitud Y Origen De Fondos</option>
+          <option value="Estados Contables Especiales">Estados Contables Especiales</option>
+          <option value="Rectificativo">Rectificativo</option>
+        </select>
+        <input type="submit" value="Continuar">
+      </form>
+    </div>
+    
+    <!-- Pantalla de Calculadora -->
+    <div id="calculatorScreen" style="display: none;">
+      <form id="arancelForm">
+        <label for="activo">Activo:</label>
+        <input type="text" id="activo" name="activo" placeholder="0,00" required inputmode="numeric"><br>
+        <label for="pasivo">Pasivo:</label>
+        <input type="text" id="pasivo" name="pasivo" placeholder="0,00" required inputmode="numeric"><br>
+        <label for="ingresos">Ingresos:</label>
+        <input type="text" id="ingresos" name="ingresos" placeholder="0,00" required inputmode="numeric"><br>
+        <input type="submit" value="Calcular">
+        <button type="button" id="enviarMail">Enviar por Mail</button>
+        <button type="button" id="otraConsulta">Otra Consulta</button>
+      </form>
+    </div>
+    
+    <!-- Pantalla de Resultado Simple -->
+    <div id="simpleResultScreen" style="display: none;">
+      <div id="simpleResult"></div>
+    </div>
+
+    <!-- Pantalla de Resultado -->
     <div id="resultado"></div>
   </div>
   <script src="script.js"></script>
