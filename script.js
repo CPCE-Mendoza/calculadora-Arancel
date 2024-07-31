@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resultado.innerHTML = `
       <p><b>Importe Base de Búsqueda:</b> $${formattedImporteBase}</p>
       <p><b>Arancel Fijo:</b> $${formattedArancel}</p>
-      <p>El arancel es para los siguientes trámites:</p>
+      <p>El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.</p>
+      <p style="text-align: left;">El arancel por escala solo corresponde para los siguientes trámites:</p>
       <ul>
         <li>Estados contables soc. comerciales</li>
         <li>Estados contables entidades sin f/ lucros</li>
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <li>Estados contables especiales</li>
         <li>Rectificativos</li>
       </ul>
-      <p>Incluye dos trámites con diferentes destinatarios.</p>
+      
       <p>Te esperamos en Mi Cuenta para gestionar el trámite.</p>
       <p><a href="https://micuenta.cpcemza.org.ar/" target="_blank"><button>Ingresar a Mi Cuenta</button></a></p>`;
   }
@@ -133,7 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const formattedArancel = formatNumber(arancel);
 
       body = `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel Fijo: $${formattedArancel}\n
-El Arancel Es Para Los Siguientes Trámites:\n
+      El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.\n
+El arancel por escala solo corresponde para los siguientes trámites:\n
 Estados Contables Soc. Comerciales\n
 Estados Contables Entidades Sin F/ Lucros\n
 Estados Contables De Cooperativa\n
@@ -141,7 +143,6 @@ Estados Contables Intermedios\n
 Compilación\n
 Estados Contables Especiales\n
 Rectificativos\n
-Incluye Dos Trámites Con Diferentes Destinatarios.\n
 Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
     } else {
       body = `Trámite: ${tipoTramite}\nEl valor del trámite es $38.000`;
