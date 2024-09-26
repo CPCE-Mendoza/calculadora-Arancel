@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const arancelForm = document.getElementById('arancelForm');
   const initialScreen = document.getElementById('initialScreen');
   const checkScreen = document.getElementById('checkScreen');
+  const checkScreenDiscount = document.getElementById('checkScreenDiscount');
   const prioridadScreen = document.getElementById('prioridadScreen');
   const calculatorScreen = document.getElementById('calculatorScreen');
   const simpleResultScreen = document.getElementById('simpleResultScreen');
@@ -227,12 +228,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function formatNumber(number) {
     var parts = number.toString().split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return parts.join('.');
-  }
+    
+    // Manejo de la parte entera con punto como separador de miles
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    
+    // Manejo de la parte decimal
+    if (parts[1]) {
+        return parts[0] + ',' + parts[1]; // Usar coma para los decimales
+    }
+    return parts[0];
+}
 
-  function formatToNumber(value) {
-    return parseFloat(value.replace(/,/g, '') || 0);
-  }
-});
+function formatToNumber(value) {
+    // Eliminar el punto de los miles y reemplazar la coma por un punto
+    return parseFloat(value.replace(/\./g, '').replace(/,/g, '.') || 0);
+}
+}
+)
 
