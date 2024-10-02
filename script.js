@@ -225,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
   function formatNumber(number) {
     var parts = number.toString().split('.');
     
@@ -247,6 +246,4 @@ function formatToNumber(value) {
     }
     return result
 }
-}
-)
-
+});
