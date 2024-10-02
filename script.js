@@ -241,7 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function formatToNumber(value) {
     // Eliminar el punto de los miles y reemplazar la coma por un punto
-    return parseFloat(value.replace(/\./g, '').replace(/,/g, '.') || 0);
+    let result = parseFloat(value.replace(/\./g, '').replace(/,/g, '.') || 0);
+    if (value.endsWith(",")) {
+      return result.toFixed() + ',';
+    }
+    return result
 }
 }
 )
