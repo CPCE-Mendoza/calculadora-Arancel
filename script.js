@@ -21,19 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   let discountPercentage = 0; // Variable para el descuento
+  let tipoTramiteSeleccionado = ''; // Variable para guardar el tipo de trámite seleccionado
 
   initialForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    const tipoTramite = document.getElementById('tipoTramite').value;
+    tipoTramiteSeleccionado = document.getElementById('tipoTramite').value;
 
-    if (tiposConCalculadora.includes(tipoTramite)) {
+    if (tiposConCalculadora.includes(tipoTramiteSeleccionado)) {
       initialScreen.style.display = 'none';
       checkScreen.style.display = 'block'; // Muestra la pantalla de chequeo
     } else {
       initialScreen.style.display = 'none';
       simpleResultScreen.style.display = 'block';
       document.getElementById('simpleResult').innerHTML = `
-        <p><b>Trámite:</b> ${tipoTramite}</p>
+        <p><b>Trámite:</b> ${tipoTramiteSeleccionado}</p>
         <p>El valor del trámite es $38.000</p>
         <button type="button" id="enviarMailSimple">Enviar por Mail</button>
         <button type="button" id="otraConsultaSimple">Otra Consulta</button>
@@ -50,12 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
   checkForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const prioridadCheck = document.getElementById('prioridadCheck').checked;
+
     if (prioridadCheck) {
       checkScreen.style.display = 'none';
       prioridadScreen.style.display = 'block';
     } else {
-      checkScreen.style.display = 'none';
-      checkScreenDiscount.style.display = 'block'; // Muestra la pantalla de descuentos
+      if (tipoTramiteSeleccionado === "Estados Contables Entidades Sin F/ Lucros") {
+        checkScreen.style.display = 'none';
+        checkScreenDiscount.style.display = 'block'; // Muestra la pantalla de descuentos
+      } else {
+        checkScreen.style.display = 'none';
+        calculatorScreen.style.display = 'block';
+      }
     }
   });
 
