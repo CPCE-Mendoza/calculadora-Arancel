@@ -51,12 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
   checkForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const prioridadCheck = document.getElementById('prioridadCheck').checked;
-
+  
+    // Obtén el tipo de trámite seleccionado
+    const tipoTramiteSeleccionado = document.getElementById('tipoTramite').value;
+  
     if (prioridadCheck) {
       checkScreen.style.display = 'none';
       prioridadScreen.style.display = 'block';
     } else {
-      if (tipoTramiteSeleccionado === "Estados Contables Entidades Sin F/ Lucros") {
+      // Verifica si el tipo de trámite seleccionado es uno de los que tienen descuento
+      if (
+        tipoTramiteSeleccionado === "Estados Contables Entidades Sin F/ Lucros" || 
+        tipoTramiteSeleccionado === "Estados Contables De Cooperativa"
+      ) {
         checkScreen.style.display = 'none';
         checkScreenDiscount.style.display = 'block'; // Muestra la pantalla de descuentos
       } else {
@@ -65,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+  
 
   checkScreenDiscount.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -176,43 +184,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let body;
 
     if (isCalculator) {
-      const activo = formatToNumber(document.getElementById('activo').value);
-      const pasivo = formatToNumber(document.getElementById('pasivo').value);
-      const ingresos = formatToNumber(document.getElementById('ingresos').value);
-      const importeBaseBusqueda = (activo + pasivo + ingresos) / 2;
-      let arancel;
+        const activo = formatToNumber(document.getElementById('activo').value);
+        const pasivo = formatToNumber(document.getElementById('pasivo').value);
+        const ingresos = formatToNumber(document.getElementById('ingresos').value);
+        const importeBaseBusqueda = (activo + pasivo + ingresos) / 2;
+        let arancel;
 
-      if (document.getElementById('prioridadCheck').checked) {
-        // Cálculo para trámites prioritarios
-        if (importeBaseBusqueda <= 30000000) {
-          arancel = 130000;
-        } else if (importeBaseBusqueda <= 120000000) {
-          arancel = 156000;
-        } else if (importeBaseBusqueda <= 500000000) {
-          arancel = 190000;
-        } else if (importeBaseBusqueda <= 2000000000) {
-          arancel = 230000;
+        if (document.getElementById('prioridadCheck').checked) {
+            // Cálculo para trámites prioritarios
+            if (importeBaseBusqueda <= 30000000) {
+                arancel = 130000;
+            } else if (importeBaseBusqueda <= 120000000) {
+                arancel = 156000;
+            } else if (importeBaseBusqueda <= 500000000) {
+                arancel = 190000;
+            } else if (importeBaseBusqueda <= 2000000000) {
+                arancel = 230000;
+            } else {
+                arancel = 270000;
+            }
         } else {
-          arancel = 270000;
+            // Cálculo para trámites no prioritarios
+            if (importeBaseBusqueda <= 30000000) {
+                arancel = 65000;
+            } else if (importeBaseBusqueda <= 120000000) {
+                arancel = 78000;
+            } else if (importeBaseBusqueda <= 500000000) {
+                arancel = 95000;
+            } else if (importeBaseBusqueda <= 2000000000) {
+                arancel = 115000;
+            } else {
+                arancel = 135000;
+            }
         }
-      } else {
-        // Cálculo para trámites no prioritarios
-        if (importeBaseBusqueda <= 30000000) {
-          arancel = 65000;
-        } else if (importeBaseBusqueda <= 120000000) {
-          arancel = 78000;
-        } else if (importeBaseBusqueda <= 500000000) {
-          arancel = 95000;
-        } else if (importeBaseBusqueda <= 2000000000) {
-          arancel = 115000;
-        } else {
-          arancel = 135000;
-        }
-      }
 
-      // Aplicar el descuento si corresponde
-      const descuento = arancel * discountPercentage;
-      const arancelFinal = arancel - descuento;
+        // Aplicar descuento si corresponde
+        const descuento = arancel * discountPercentage;
+        const arancelFinal = arancel - descuento;
 
       const formattedImporteBase = formatNumber(importeBaseBusqueda);
       const formattedArancel = formatNumber(arancelFinal);
