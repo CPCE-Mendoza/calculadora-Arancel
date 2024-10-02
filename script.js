@@ -283,3 +283,4 @@ function formatToNumber(value) {
     return result
 }
 });
+
