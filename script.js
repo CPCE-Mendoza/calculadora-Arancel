@@ -158,7 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const descuento = arancel * discountPercentage;
     const arancelFinal = arancel - descuento;
 
-    const formattedImporteBase = formatNumber(importeBaseBusqueda);
+    const formattedImporteBase = formatNumber(parseFloat(importeBaseBusqueda).toFixed(2));
+
     const formattedArancel = formatNumber(arancelFinal);
 
     resultado.innerHTML = `
