@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     "Rectificativo"
   ];
 
+  let discountPercentage = 0; // Variable para el descuento
+
   initialForm.addEventListener('submit', function(event) {
     event.preventDefault();
     const tipoTramite = document.getElementById('tipoTramite').value;
 
     if (tiposConCalculadora.includes(tipoTramite)) {
       initialScreen.style.display = 'none';
-      checkScreen.style.display = 'block';
+      checkScreen.style.display = 'block'; // Muestra la pantalla de chequeo
     } else {
       initialScreen.style.display = 'none';
       simpleResultScreen.style.display = 'block';
@@ -53,8 +55,26 @@ document.addEventListener('DOMContentLoaded', () => {
       prioridadScreen.style.display = 'block';
     } else {
       checkScreen.style.display = 'none';
-      calculatorScreen.style.display = 'block';
+      checkScreenDiscount.style.display = 'block'; // Muestra la pantalla de descuentos
     }
+  });
+
+  checkScreenDiscount.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Obtener el descuento seleccionado
+    const discountOptions = document.getElementsByName('discountCheck');
+    discountPercentage = 0; // Reiniciar el descuento
+
+    for (const option of discountOptions) {
+      if (option.checked) {
+        discountPercentage = parseFloat(option.value) / 100; // Convertir a porcentaje
+        break;
+      }
+    }
+
+    // Ir a la calculadora
+    calculatorScreen.style.display = 'block'; 
   });
 
   arancelForm.addEventListener('submit', function(event) {
@@ -119,8 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Aplicar el descuento si corresponde
+    const descuento = arancel * discountPercentage;
+    const arancelFinal = arancel - descuento;
+
     const formattedImporteBase = formatNumber(importeBaseBusqueda);
-    const formattedArancel = formatNumber(arancel);
+    const formattedArancel = formatNumber(arancelFinal);
 
     resultado.innerHTML = `
       <p><b>Importe Base de Búsqueda:</b> $${formattedImporteBase}</p>
@@ -179,8 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Aplicar el descuento si corresponde
+      const descuento = arancel * discountPercentage;
+      const arancelFinal = arancel - descuento;
+
       const formattedImporteBase = formatNumber(importeBaseBusqueda);
-      const formattedArancel = formatNumber(arancel);
+      const formattedArancel = formatNumber(arancelFinal);
 
       body = `Importe Base De Búsqueda: $${formattedImporteBase}\nArancel a pagar: $${formattedArancel}\n
       El arancel incluye dos ejemplares. Para copias adicionales el 50% del arancel vigente.\n
@@ -225,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
   function formatNumber(number) {
     var parts = number.toString().split('.');
     
