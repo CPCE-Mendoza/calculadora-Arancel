@@ -57,20 +57,20 @@
 
     <!-- Pantalla de Check de descuento -->
     <div id="checkScreenDiscount" style="display: none;">
-      <h2>Seleccione si el trámite es prioritario</h2>
-      <form id="checkFormDiscount">
+      <h2>Seleccione si el trámite tiene descuento</h2>
+      <form id="checkScreenDiscount">
         <label>
-          <input type="checkbox" id="discountCheck" name="discoutCheck">
-          Descuento del 50%
-        </label><br>
-        <input type="submit" value="Continuar">
+            <input type="radio" name="discountCheck" id="discountCheck50" value="50"> 50% de descuento
+        </label>
         <label>
-          <input type="checkbox" id="discountCheck" name="discoutCheck">
-          Descuento del 70%
-        </label><br>
-        <input type="submit" value="Continuar">
-      </form>
-    </div>
+            <input type="radio" name="discountCheck" id="discountCheck70" value="70"> 70% de descuento
+        </label>
+        <label>
+            <input type="radio" name="discountCheck" id="discountCheckNone" value="0" checked> Sin descuento
+        </label>
+        <button type="submit">Continuar</button>
+    </form>
+  </div>
 
     <!-- Pantalla de Prioridad -->
     <div id="prioridadScreen" style="display: none;">
