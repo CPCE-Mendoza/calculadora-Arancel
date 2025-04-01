@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       simpleResultScreen.style.display = 'block';
       document.getElementById('simpleResult').innerHTML = `
         <p><b>Trámite:</b> ${tipoTramiteSeleccionado}</p>
-        <p>El valor del trámite es $38.000</p>
+        <p>El valor del trámite es $50.000</p>
         <button type="button" id="enviarMailSimple">Enviar por Mail</button>
         <button type="button" id="otraConsultaSimple">Otra Consulta</button>
       `;
@@ -128,29 +128,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.getElementById('prioridadCheck').checked) {
       // Cálculo para trámites prioritarios
-      if (importeBaseBusqueda <= 30000000) {
-        arancel = 130000;
-      } else if (importeBaseBusqueda <= 120000000) {
-        arancel = 156000;
-      } else if (importeBaseBusqueda <= 500000000) {
-        arancel = 190000;
-      } else if (importeBaseBusqueda <= 2000000000) {
-        arancel = 230000;
+      if (importeBaseBusqueda <= 40000000) {
+        arancel = 170000;
+      } else if (importeBaseBusqueda <= 160000000) {
+        arancel = 210000;
+      } else if (importeBaseBusqueda <= 650000000) {
+        arancel = 260000;
+      } else if (importeBaseBusqueda <= 2600000000) {
+        arancel = 320000;
       } else {
-        arancel = 270000;
+        arancel = 400000;
       }
     } else {
       // Cálculo para trámites no prioritarios
-      if (importeBaseBusqueda <= 30000000) {
-        arancel = 65000;
-      } else if (importeBaseBusqueda <= 120000000) {
-        arancel = 78000;
-      } else if (importeBaseBusqueda <= 500000000) {
-        arancel = 95000;
-      } else if (importeBaseBusqueda <= 2000000000) {
-        arancel = 115000;
+      if (importeBaseBusqueda <= 40000000) {
+        arancel = 85000;
+      } else if (importeBaseBusqueda <= 160000000) {
+        arancel = 105000;
+      } else if (importeBaseBusqueda <= 650000000) {
+        arancel = 130000;
+      } else if (importeBaseBusqueda <= 2600000000) {
+        arancel = 160000;
       } else {
-        arancel = 135000;
+        arancel = 200000;
       }
     }
 
@@ -193,29 +193,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (document.getElementById('prioridadCheck').checked) {
             // Cálculo para trámites prioritarios
-            if (importeBaseBusqueda <= 30000000) {
-                arancel = 130000;
-            } else if (importeBaseBusqueda <= 120000000) {
-                arancel = 156000;
-            } else if (importeBaseBusqueda <= 500000000) {
-                arancel = 190000;
-            } else if (importeBaseBusqueda <= 2000000000) {
-                arancel = 230000;
+            if (importeBaseBusqueda <= 40000000) {
+              arancel = 170000;
+            } else if (importeBaseBusqueda <= 160000000) {
+              arancel = 210000;
+            } else if (importeBaseBusqueda <= 650000000) {
+              arancel = 260000;
+            } else if (importeBaseBusqueda <= 2600000000) {
+              arancel = 320000;
             } else {
-                arancel = 270000;
+              arancel = 400000;
             }
         } else {
             // Cálculo para trámites no prioritarios
-            if (importeBaseBusqueda <= 30000000) {
-                arancel = 65000;
-            } else if (importeBaseBusqueda <= 120000000) {
-                arancel = 78000;
-            } else if (importeBaseBusqueda <= 500000000) {
-                arancel = 95000;
-            } else if (importeBaseBusqueda <= 2000000000) {
-                arancel = 115000;
+            if (importeBaseBusqueda <= 40000000) {
+              arancel = 85000;
+            } else if (importeBaseBusqueda <= 160000000) {
+              arancel = 105000;
+            } else if (importeBaseBusqueda <= 650000000) {
+              arancel = 130000;
+            } else if (importeBaseBusqueda <= 2600000000) {
+              arancel = 160000;
             } else {
-                arancel = 135000;
+              arancel = 200000;
             }
         }
 
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
       Rectificativos\n
       Te Esperamos En Mi Cuenta Para Gestionar El Trámite`;
     } else {
-      body = `Trámite: ${tipoTramite}\nEl valor del trámite es $38.000`;
+      body = `Trámite: ${tipoTramite}\nEl valor del trámite es $50.000`;
     }
 
     const recipient = prompt("Introduce el email del destinatario:", "destinatario@example.com");
@@ -292,4 +292,6 @@ function formatToNumber(value) {
     return result
 }
 });
+
+
 
