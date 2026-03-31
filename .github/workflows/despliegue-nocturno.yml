@@ -1,0 +1,29 @@
+name: Despliegue Programado Nocturno
+
+on:
+  schedule:
+    # 03:00 UTC equivale a las 00:00 hs en Argentina
+    - cron: '0 3 * * *'
+  workflow_dispatch: 
+
+jobs:
+  merge-y-desplegar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+        with:
+          ref: main 
+          fetch-depth: 0 
+
+      - name: Configurar Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Fusionar dev en main
+        run: |
+          # En GitHub Actions, "origin" es el repositorio donde se ejecuta (CPCE-Mendoza)
+          git fetch origin dev
+          git merge origin/dev -m "Auto-merge nocturno de dev a main" --allow-unrelated-histories
+          git push origin main
