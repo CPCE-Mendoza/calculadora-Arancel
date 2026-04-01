@@ -1,3 +1,8 @@
+/* ============================================================
+   CPCE MENDOZA — Simulador de Aranceles
+   Design System: Institucional · Moderno
+   Developer: Diego Moreno Rico
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
